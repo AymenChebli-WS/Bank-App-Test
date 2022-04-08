@@ -1,0 +1,9 @@
+- bcrypt: secure password
+- cors: access api in frontend
+- morgan: whenever u make an api request we see it in console
+- nodemon: autorestarts server whenever files are changed
+
+== client
+- react-file-base64: to upload images
+- axios: make api requests with backend
+- moment: for dates (parse, format etc..)

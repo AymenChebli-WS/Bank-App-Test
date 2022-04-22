@@ -4,7 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import userRouter from "./routes/user.js";
 import compteRouter from "./routes/compte.js";
-
+import transferRouter from "./routes/transfer.js"
 
 // mongodb+srv://admin:<password>@cluster0.m2uog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 
@@ -16,6 +16,7 @@ app.use(cors());
 
 app.use("/users", userRouter); //path
 app.use("/compte", compteRouter);
+app.use("/transfer", transferRouter);
 
 const MONGODB_URL = "mongodb+srv://admin:admin123@cluster0.m2uog.mongodb.net/amen_db?retryWrites=true&w=majority"
 

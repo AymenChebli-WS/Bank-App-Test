@@ -16,6 +16,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, Tooltip, IconButton, ListSubheader, Menu, MenuItem, FormControl, InputLabel, OutlinedInput, InputAdornment } from '@mui/material'
 import UserNavMenu from './UserNavMenu';
+import logo from './assets/LogoV1.png'
 
 
 const drawerWidth = 240;
@@ -26,7 +27,7 @@ const Navbar = () => {
         <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: '#04953d', }}>
         <Toolbar>
-          <img src="/assets/LogoV1.png" height="50"  alt='placeholder-logo' />
+          <img src={logo} height="50"  alt='placeholder-logo' />
           
           <FormControl sx={{borderColor: 'white', outlineColor: 'white'}}>
           <OutlinedInput

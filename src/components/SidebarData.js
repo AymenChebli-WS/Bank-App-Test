@@ -15,7 +15,7 @@ import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 export const SidebarData = [
     {
         title: 'Compte',
-        path: '/',
+        path: '/Home',
         icon: <PersonIcon />,
         cName: 'nav-text'
     },
@@ -27,7 +27,7 @@ export const SidebarData = [
     },
     {
         title: 'Virement',
-        path: '/products',
+        path: '/transfer',
         icon: <FaExchangeAlt style={{marginLeft: '0.25rem', fontSize: 18}} />,
         cName: 'nav-text'
     },

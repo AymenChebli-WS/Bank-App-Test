@@ -19,3 +19,6 @@ export const getComptes = () => API.get("/compte/getComptes");
 export const getCompte = (id) => API.get(`/compte/getCompte/${id}`);
 export const deleteCompte = (id) => API.delete(`/compte/${id}`);
 export const updateCompte = (compteData, id) => API.patch(`/compte/${id}`, compteData);
+
+
+export const createTransfer = (formData) => API.post("/transfer/createTrans", formData);

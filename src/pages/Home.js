@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import { Paper, Typography, Grid, Table, TableHead, TableCell, TableBody, TableRow, ListItem, ListItemIcon, ListItemText, List, ListItemButton } from '@mui/material';
-import './Pages.css';
-import VueDensemble from '../components/VueDensemble';
+import { Paper, Typography, Grid, ListItem, ListItemIcon, ListItemText, List, ListItemButton } from '@mui/material';
 
+import './Pages.css';
+
+import VueDensemble from '../components/VueDensemble';
 
 
 const Home = () => {
@@ -12,6 +13,9 @@ const Home = () => {
     <div className='Pages'>
       <Container className='test' sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
+           
+      
+              
               {/* Vue Densemble */}
               <VueDensemble />
               {/* CompteStuff */}

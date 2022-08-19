@@ -41,9 +41,9 @@ export const deleteCompte = createAsyncThunk("compte/deleteCompte", async({id, t
     }
 });
 
-export const updateCompte = createAsyncThunk("compte/updateCompte", async({id, updatedCompteData, toast, navigate}, {rejectWithValue}) => {
+export const updateCompte = createAsyncThunk("compte/updateCompte", async({id, compteData, toast, navigate}, {rejectWithValue}) => {
     try {
-        const response = await api.updateCompte(updatedCompteData, id);
+        const response = await api.updateCompte(compteData, id);
         toast.success("Compte updated successfully");
         navigate("/");
         return response.data;
@@ -51,6 +51,47 @@ export const updateCompte = createAsyncThunk("compte/updateCompte", async({id, u
         return rejectWithValue(error.response.data);
     }
 });
+
+export const findCompte = createAsyncThunk("compte/compteBynum", async(num, {rejectWithValue}) => {
+    
+    try {
+        const response = await api.findCompte(num);
+        return response.data;
+    }
+    catch(error){
+        return rejectWithValue(error.response.data);
+    }
+})
+export const getComptesByUser = createAsyncThunk("compte/userComptes", async(userId, {rejectWithValue}) => {
+    try {
+        const response = await api.getComptesByUser(userId);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+});
+
+export const compteToCompte = createAsyncThunk("/compte/compteToCompte", async(transdata, {rejectWithValue}) => {
+    try {
+        
+        const response = await api.compteToCompte(transdata)
+        
+        return response.data;
+    }catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+
+})
+
+export const testusercompt = createAsyncThunk("compte/testusercompt", async({userId,sender,ammount,transDate},{rejectWithValue}) => {
+    try {
+        const response = await api.testusercompt(userId,sender,ammount,transDate);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data);
+    }
+});
+
 
 const compteSlice = createSlice({
     name: "compte",
@@ -125,7 +166,32 @@ const compteSlice = createSlice({
             state.loading = false;
             state.error = action.payload.message;
         },
-    }
+        [getComptesByUser.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getComptesByUser.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.userComptes = action.payload;
+        },
+        [getComptesByUser.rejected]: (state, action) => {
+            state.loading = false;
+            state.userComptes = action.payload.message;
+        },
+        [findCompte.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [findCompte.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.compte = action.payload;
+        },
+        [findCompte.rejected]: (state, action) => {
+            state.loading = false;
+            state.compte = action.payload.message;
+        },
+    },
+    
+    
+    
 });
 
 export default compteSlice.reducer;

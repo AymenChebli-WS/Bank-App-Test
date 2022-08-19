@@ -16,7 +16,7 @@ export const signin = async (req, res) => {
 
         if (!isPasswordCorrect) return res.status(400).json({message: "Invalid Credentials"});
 
-        const token = jwt.sign({email: oldUser.email, id: oldUser._id}, secret, {expiresIn: "1h"});
+        const token = jwt.sign({email: oldUser.email, id: oldUser._id}, secret, );
         res.status(200).json({result: oldUser, token});
     } catch(error) {
         res.status(500).json({message: "Something went wrong"});
@@ -25,7 +25,7 @@ export const signin = async (req, res) => {
 }
 
 export const signup = async (req, res) => {
-    const {email, password, firstName, lastName} = req.body;
+    const {email, password, firstName, lastName, address, phoneNumber, secondaryPhoneNumber, userType} = req.body;
     try {
         const oldUser = await UserModal.findOne({email});
 
@@ -36,15 +36,31 @@ export const signup = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 12);
 
         const result = await UserModal.create({
-            email,
+            email, address, phoneNumber, secondaryPhoneNumber, userType,
             password: hashedPassword,
             name: `${firstName} ${lastName}`
-        });
-
-        const token = jwt.sign({email: result.email, id: result._id}, secret, {expiresIn: "1h"});
+        }); 
+        const token = jwt.sign({email: result.email, id: result._id}, secret, );
         res.status(201).json({result, token});
     } catch(error) {
         res.status(500).json({message: "Something went wrong"});
         console.log(error);
     }
 };
+export const getUser = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const user = await UserModal.findById(id);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(404).json({message: "Something went wrong."});
+    }
+}
+export const getUsers = async (req, res) => {
+    try {
+        const users = await UserModal.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({message: "Something went wrong."});
+    }
+}

@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createCompte, updateCompte } from '../redux/features/compteSlice';
 
 const initialState = {
-    numCompte: null,
+    numCompte: "",
     libelle: "",
-    dateSolde: null,
+    dateSolde: "",
     devise: "",
-    soldeActuel: null,
+    soldeActuel: "",
     
 }
 
@@ -17,6 +17,7 @@ const AddEditCompte = () => {
 
     const [compteData, setCompteData] = useState(initialState);
     const {error, loading, comptes} = useSelector((state) => ({ ...state.compte})); //register compte key
+    const {user} = useSelector((state) => ({ ...state.auth})); 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

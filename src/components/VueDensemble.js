@@ -2,18 +2,22 @@ import React, {useEffect} from 'react'
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import { Paper, Typography, Grid, Table, TableHead, TableCell, TableBody, TableRow } from '@mui/material';
 import {useDispatch, useSelector} from "react-redux";
-import { getComptes } from '../redux/features/compteSlice';
+import { getComptesByUser } from '../redux/features/compteSlice';
 import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 
 
 const VueDensemble = () => {
-    const {comptes, loading} = useSelector((state) => ({...state.compte}))
+    const {userComptes, loading} = useSelector((state) => ({...state.compte}))
+    const {user} = useSelector((state) => ({...state.auth}))
     const dispatch = useDispatch();
+    const userId = user?.result?._id;
 
     useEffect(() => {
-        dispatch(getComptes());
-    }, []);
+      if (userId){
+        dispatch(getComptesByUser(userId));
+      }
+    }, [userId]);
 
     if(loading) {
         return <Spinner />
@@ -39,14 +43,14 @@ const VueDensemble = () => {
                         <TableCell>Solde actuel</TableCell>
                       </TableRow>
                     </TableHead>
-                    {comptes.length === 0 && (
+                    {userComptes.length === 0 && (
                         <Typography variant="h1" color="black" fontSize={14} gutterBottom>
                         Aucun compte trouvé.
                         </Typography>
                     )}
 
                     <TableBody>
-                      {comptes && comptes.map((item, index) => (
+                      {userComptes && userComptes.map((item, index) => (
                         <TableRow key={index}>
                           <TableCell>{item.numCompte}</TableCell>
                           <TableCell>{item.libelle}</TableCell>

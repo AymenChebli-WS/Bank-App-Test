@@ -7,8 +7,6 @@ const TransferSchema = mongoose.Schema({ //not number cuz it removes the 0
     transDate: String,
     comment: String,
     Devise:String,
-    senderUser : String,
-    reciverUser : String,
 });
 
 const TransferModal = mongoose.model("Transfer", TransferSchema);

@@ -24,22 +24,6 @@ export const register = createAsyncThunk("auth/register", async({formValue, navi
         return rejectWithValue(error.response.data);
     }
 });
-export const getUser = createAsyncThunk("users/getUser", async(id, {rejectWithValue}) => {
-    try {
-        const response = await api.getUser(id);
-        return response.data;
-    } catch (error) {
-        return rejectWithValue(error.response.data);
-    }
-});
-export const getUsers = createAsyncThunk("users/getUsers", async(_, {rejectWithValue}) => {
-    try {
-        const response = await api.getUsers();
-        return response.data;
-    } catch (error) {
-        return rejectWithValue(error.response.data);
-    }
-});
 
 const authSlice = createSlice({
     name: "auth",
@@ -47,8 +31,6 @@ const authSlice = createSlice({
         user: null,
         error: "",
         loading: false,
-        singleUser: null,
-        users: [],
     },
     reducers: {
         setUser: (state, action) => {
@@ -83,29 +65,7 @@ const authSlice = createSlice({
         [register.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload.message;
-        },
-        [getUser.pending]: (state, action) => {
-            state.loading = true;
-        },
-        [getUser.fulfilled]: (state, action) => {
-            state.loading = false;
-            state.singleUser = action.payload;
-        },
-        [getUser.rejected]: (state, action) => {
-            state.loading = false;
-            state.singleUser = action.payload.message;
-        },
-        [getUsers.pending]: (state, action) => {
-            state.loading = true;
-        },
-        [getUsers.fulfilled]: (state, action) => {
-            state.loading = false;
-            state.users = action.payload;
-        },
-        [getUsers.rejected]: (state, action) => {
-            state.loading = false;
-            state.error = action.payload.message;
-        },
+        }
     }
 });
 

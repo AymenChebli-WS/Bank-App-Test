@@ -35,7 +35,6 @@
     border: none;
     font-size: 25px;
     cursor: pointer;
-    ;
   }
   
   .modalContainer .body {
@@ -59,7 +58,7 @@
     height: 45px;
     margin: 10px;
     border: none;
-    background-color: #04951d;
+    background-color: cornflowerblue;
     color: white;
     border-radius: 8px;
     font-size: 20px;
@@ -67,5 +66,5 @@
   }
   
   #cancelBtn {
-    background-color: rgb(223, 7, 50);
+    background-color: crimson;
   }

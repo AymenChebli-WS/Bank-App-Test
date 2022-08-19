@@ -1,10 +1,7 @@
 import express from "express";
 const router = express.Router();
-import {createTransfer,getTransferByuser,getTransfers} from "../controllers/Transfer.js";
-import auth from "../middleware/auth.js";
+import {createTransfer} from "../controllers/Transfer.js";
 
-router.post("/createTrans",auth, createTransfer);
-router.get("/getTransferByuser/:id", auth ,getTransferByuser);
-router.get("/getTransfers",getTransfers);
+router.post("/createTrans", createTransfer);
 
 export default router;

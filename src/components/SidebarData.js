@@ -20,8 +20,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'historique',
-        path: '/historique',
+        title: 'Téléchargement',
+        path: '/comptes',
         icon: <DownloadIcon />,
         cName: 'nav-text'
     },
@@ -29,12 +29,6 @@ export const SidebarData = [
         title: 'Virement',
         path: '/transfer',
         icon: <FaExchangeAlt style={{marginLeft: '0.25rem', fontSize: 18}} />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Financement',
-        path: '/financement',
-        icon: <PriceCheckIcon />,
         cName: 'nav-text'
     },
     {
@@ -55,7 +49,12 @@ export const SidebarData = [
         icon: <SdCardAlertIcon />,
         cName: 'nav-text'
     },
-
+    {
+        title: 'Financement',
+        path: '/products',
+        icon: <PriceCheckIcon />,
+        cName: 'nav-text'
+    },
     {
         title: 'Change/Bourse',
         path: '/products',

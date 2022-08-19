@@ -1,12 +1,11 @@
 import React from "react";
 import "./Modal.css";
 
-function Modal({ setOpenModal,handleSubmit,sender,receiver,amount,Devise }) {
+function Modal({ setOpenModal }) {
   return (
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
-  
           <button
             onClick={() => {
               setOpenModal(false);
@@ -14,13 +13,12 @@ function Modal({ setOpenModal,handleSubmit,sender,receiver,amount,Devise }) {
           >
             X
           </button>
-  
         </div>
         <div className="title">
-          <h1>Êtes-vous sûr de vouloir vous transformer ?</h1>
+          <h1>Are You Sure You Want to Transer?</h1>
         </div>
         <div className="body">
-          <p>Vous êtes sur le point de transférer un montant : <strong> {amount} {Devise}</strong> de  <strong>{sender}</strong> à  <strong>{receiver}. </strong></p>
+          <p>You are About to Transfer X amount from A to B </p>
         </div>
         <div className="footer">
           <button
@@ -29,11 +27,9 @@ function Modal({ setOpenModal,handleSubmit,sender,receiver,amount,Devise }) {
             }}
             id="cancelBtn"
           >
-            Annuler
+            Cancel
           </button>
-          <button  onClick={()=>{
-            handleSubmit()
-          }}>Envoyer</button>
+          <button type="submit">Submit</button>
         </div>
       </div>
     </div>

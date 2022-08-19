@@ -6,6 +6,7 @@ const compteSchema = mongoose.Schema({
     dateSolde: String, //not date cuz of the format
     devise: String,
     soldeActuel: Number,
+    owner : String,
 });
 
 const CompteModal = mongoose.model("Compte", compteSchema);
